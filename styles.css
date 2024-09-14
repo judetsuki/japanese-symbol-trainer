@@ -17,15 +17,20 @@ html{
 
 .answer-box{
     position: relative;
+    background-color: transparent;
     text-align: center;
     color: #F0F6FC;
     border: 1px #3D444D solid; 
     border-radius: 5px;
-    max-width: fit-content;
+    max-width: 200px;
     margin-top: 10%;
     transform: translateX(calc(50vw - 50%));
     max-height: fit-content;
     font-size: 7vw;
+}
+
+.answer-box:focus{
+    outline: none;
 }
 
 /* 
