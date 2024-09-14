@@ -3,17 +3,29 @@ html{
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
 }
 .kana-box{
-    --width: fit-content;
     position: relative;
     text-align: center;
     color: #F0F6FC;
     border: 1px #3D444D solid; 
     border-radius: 5px;
-    max-width: var(--width);
+    max-width:fit-content;
     margin-top: 10%;
     transform: translateX(calc(50vw - 50%));
     height: fit-content;
     font-size: 15vw;
+}
+
+.answer-box{
+    position: relative;
+    text-align: center;
+    color: #F0F6FC;
+    border: 1px #3D444D solid; 
+    border-radius: 5px;
+    max-width: fit-content;
+    margin-top: 10%;
+    transform: translateX(calc(50vw - 50%));
+    max-height: fit-content;
+    font-size: 7vw;
 }
 
 /* 
