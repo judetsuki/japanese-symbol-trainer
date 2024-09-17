@@ -1,20 +1,8 @@
 // symbolDisplay.js
 import { hiraganaList } from "./symbolList.js";
 
-
-console.log('JavaScript file loaded');
-
-
-console.log('hiraganaList:', hiraganaList);
-
-
 const kanaBox = document.querySelector('.kana-box');
-console.log('kanaBox:', kanaBox);
-
-
 const answerBox = document.querySelector('.answer-box');
-console.log('answerBox:', answerBox);
-
 
 let currentKana = null;
 
@@ -26,15 +14,17 @@ function showNextKana() {
   answerBox.value = ''; // Clear the input field
 }
 
-
 showNextKana();
 
+const correctHiraganaList = {};
 
 answerBox.addEventListener('input', () => {
   const userAnswer = answerBox.value;
   const correctAnswer = Object.keys(hiraganaList).find(key => hiraganaList[key] === currentKana);
   if (userAnswer === correctAnswer) {
     console.log('Correct!');
+    correctHiraganaList[userAnswer] = hiraganaList[correctAnswer]; // Store the correctly guessed kana in the new list
+    delete hiraganaList[correctAnswer]; // Remove the correctly guessed kana from the original list
     showNextKana();
   }
 });

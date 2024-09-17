@@ -47,3 +47,5 @@ export const hiraganaList = {
     'wo': 'を',
     'n': 'ん',
   };
+
+  
