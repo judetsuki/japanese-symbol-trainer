@@ -1,40 +1,32 @@
-// symbolDisplay.js
-import { hiraganaList } from "./symbolList.js";
+fetch("./symbolList.json")
+  .then((response) => response.json())
+  .then((json) => {
+    const hiraganaList = json;
 
+    const SymbolBox = document.querySelector(".symbol-box");
+    const answerBox = document.querySelector(".answer-box");
 
-console.log('JavaScript file loaded');
+    let currentSymbol = null;
 
+    function showNextSymbol() {
+      const randomKey =
+        Object.keys(hiraganaList)[
+          Math.floor(Math.random() * Object.keys(hiraganaList).length)
+        ];
+      currentSymbol = hiraganaList[randomKey];
+      SymbolBox.textContent = currentSymbol;
+      answerBox.value = "";
+    }
 
-console.log('hiraganaList:', hiraganaList);
+    showNextSymbol();
 
-
-const kanaBox = document.querySelector('.kana-box');
-console.log('kanaBox:', kanaBox);
-
-
-const answerBox = document.querySelector('.answer-box');
-console.log('answerBox:', answerBox);
-
-
-let currentKana = null;
-
-
-function showNextKana() {
-  const randomKey = Object.keys(hiraganaList)[Math.floor(Math.random() * Object.keys(hiraganaList).length)];
-  currentKana = hiraganaList[randomKey];
-  kanaBox.textContent = currentKana;
-  answerBox.value = ''; // Clear the input field
-}
-
-
-showNextKana();
-
-
-answerBox.addEventListener('input', () => {
-  const userAnswer = answerBox.value;
-  const correctAnswer = Object.keys(hiraganaList).find(key => hiraganaList[key] === currentKana);
-  if (userAnswer === correctAnswer) {
-    console.log('Correct!');
-    showNextKana();
-  }
-});
+    answerBox.addEventListener("input", () => {
+      const userAnswer = answerBox.value;
+      const correctAnswer = Object.keys(hiraganaList).find(
+        (key) => hiraganaList[key] === currentSymbol
+      );
+      if (userAnswer === correctAnswer) {
+        showNextSymbol();
+      }
+    });
+  });
